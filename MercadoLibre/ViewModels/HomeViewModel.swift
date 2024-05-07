@@ -8,13 +8,16 @@
 import SwiftUI
 
 class HomeViewModel: ObservableObject {
+    @ObservedObject var prefs = UserPreferencesService.shared
+    
     @Published var isLoading = false
     @Published var settings: SiteConfigModel?
     @Published var errorMessage: String?
     @Published var searchText: String = ""
     
     private let sitesApi = SitesApi()
-
+    
+    // Obtiene la configuración del sitio
     func getSettings() {
         isLoading = true
         sitesApi.getSettings { [weak self] result in

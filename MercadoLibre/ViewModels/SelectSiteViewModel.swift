@@ -9,6 +9,8 @@ import SwiftUI
 import Combine
 
 class SelectSiteViewModel: ObservableObject {
+    @ObservedObject var prefs = UserPreferencesService.shared
+    
     @Published var isLoading = false
     @Published var sites = [SitesModel]()
     @Published var errorMessage: String?

@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct SelectSiteView: View {
-    @Environment(\.presentationMode) var presentationMode
-    
     @StateObject private var viewModel = SelectSiteViewModel()
-    @ObservedObject var preferences = UserPreferencesService.shared
+    
+    // Variable de entorno para gestionar el estado de presentación de esta vista.
+    // Utiliza esto para cerrar programáticamente la vista cuando se realice una acción
+    @Environment(\.presentationMode) var presentationMode
     
     // Determina si la vista se carga como introducción
     @State var isIntro = true
@@ -37,9 +38,9 @@ struct SelectSiteView: View {
                             Text(site.name)
                         }
                         .onTapGesture {
-                            preferences.countryCode = site.countryCode
-                            preferences.countryId = site.id
-                            preferences.defaultCurrencyId = site.defaultCurrencyId
+                            viewModel.prefs.countryCode = site.countryCode
+                            viewModel.prefs.countryId = site.id
+                            viewModel.prefs.defaultCurrencyId = site.defaultCurrencyId
                             
                             if !isIntro {
                                 // Cierra la vista actual

@@ -218,9 +218,6 @@
 			isa = PBXGroup;
 			children = (
 				0D2D0EE62BE9F9C400D9F6C3 /* Common */,
-				0D0697622BE8AF8900DEA74B /* HomeView.swift */,
-				0D06977A2BE8B03600DEA74B /* SelectSiteView.swift */,
-				0DBE1D4D2BEAA2E500504380 /* ResultsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -267,6 +264,7 @@
 				0D2D0EE52BE9F9BC00D9F6C3 /* Organisms */,
 				0D2D0EE42BE9F9B800D9F6C3 /* Molecules */,
 				0D2D0EE32BE9F9B200D9F6C3 /* Atoms */,
+				0DBE9C8F2BEAB773002D29F4 /* Pages */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -277,6 +275,16 @@
 				0DB290AF2BEA145D00246186 /* ColorExt.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0DBE9C8F2BEAB773002D29F4 /* Pages */ = {
+			isa = PBXGroup;
+			children = (
+				0D0697622BE8AF8900DEA74B /* HomeView.swift */,
+				0D06977A2BE8B03600DEA74B /* SelectSiteView.swift */,
+				0DBE1D4D2BEAA2E500504380 /* ResultsView.swift */,
+			);
+			path = Pages;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
