@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct SearchView: View {
-    var text: String?
+    var searchText: String
     
     var body: some View {
-        if text != nil && text?.count ?? 0 > 0 {
+        if searchText.count > 0 {
             ZStack {
                 Color.white
             }
@@ -21,5 +21,5 @@ struct SearchView: View {
 }
 
 #Preview {
-    SearchView(text: "text...")
+    SearchView(searchText: "text...")
 }

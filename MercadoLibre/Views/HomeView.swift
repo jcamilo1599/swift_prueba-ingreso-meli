@@ -9,44 +9,74 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
+    @State private var navigateToResults = false
+    
     @ObservedObject var preferences = UserPreferencesService.shared
     
     var body: some View {
         NavigationStack {
-            ZStack {
-                ScrollView {
-                    VStack {
-                        CarouselView()
-                        
-                        Spacer().frame(height: 30)
-                        
-                        if let categories = viewModel.settings?.categories {
-                            CategoriesView(categories: categories)
-                        } else if viewModel.errorMessage != nil {
-                            ErrorApiView()
-                        }
+            mainContent()
+                .navigationTitle("app-name")
+                .searchable(
+                    text: $viewModel.searchText,
+                    prompt: Text("field-search")
+                )
+                .onSubmit(of: .search) {
+                    if viewModel.searchText.count > 0 {
+                        navigateToResults = true
                     }
                 }
-                .ignoresSafeArea(edges: [.leading, .trailing])
-                .navigationTitle("app-name")
-                .searchable(text: $viewModel.searchText)
                 .navigationBarItems(
                     trailing: HStack {
                         FlagCountryView(countryCode: preferences.countryCode)
                         ShoppingCartBtnView()
                     }
                 )
-                
-                SearchView(text: viewModel.searchText)
-            }
+                .navigationDestination(isPresented: $navigateToResults) {
+                    // Navegación programática a la vista de resultados
+                    ResultsView(searchText: viewModel.searchText)
+                }
+                .onAppear {
+                    navigateToResults = false
+                    viewModel.getSettings()
+                }
+                .onChange(of: preferences.countryCode, initial: false) { old, new in
+                    if old != new {
+                        viewModel.getSettings()
+                    }
+                }
         }
-        .onAppear {
-            viewModel.getSettings()
-        }
-        .onChange(of: preferences.countryCode, initial: false) { old, new in
-            if old != new {
-                viewModel.getSettings()
+    }
+    
+    @ViewBuilder
+    private func mainContent() -> some View {
+        ZStack {
+            ScrollView {
+                VStack {
+                    CarouselView()
+                    
+                    Spacer().frame(height: 30)
+                    
+                    if let categories = viewModel.settings?.categories {
+                        CategoriesView(categories: categories)
+                    } else if viewModel.errorMessage != nil {
+                        ErrorApiView()
+                    }
+                }
             }
+            .ignoresSafeArea(edges: [.leading, .trailing])
+            
+            // Vista del buscador
+            SearchView(searchText: viewModel.searchText)
+        }
+    }
+    
+    @ViewBuilder
+    private func categoriesOrErrorView() -> some View {
+        if let categories = viewModel.settings?.categories {
+            CategoriesView(categories: categories)
+        } else if viewModel.errorMessage != nil {
+            ErrorApiView()
         }
     }
 }

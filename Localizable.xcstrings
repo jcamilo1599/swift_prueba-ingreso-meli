@@ -6,7 +6,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Mercado Libre"
           }
         },
@@ -99,6 +99,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "No se cargaron sitios"
+          }
+        }
+      }
+    },
+    "results" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Results"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resultados"
           }
         }
       }
