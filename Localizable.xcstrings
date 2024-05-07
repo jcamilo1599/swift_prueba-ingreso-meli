@@ -18,6 +18,29 @@
         }
       }
     },
+    "Categoría %lld" : {
+
+    },
+    "Categorías Destacadas" : {
+
+    },
+    "field-search" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search for products, brands and more..."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar productos, marcas y más..."
+          }
+        }
+      }
+    },
     "loading" : {
       "extractionState" : "manual",
       "localizations" : {

@@ -29,6 +29,10 @@
 		0D06977F2BE8BB3600DEA74B /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D06977E2BE8BB3600DEA74B /* ImageView.swift */; };
 		0D0697812BE8D01300DEA74B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0697802BE8D01300DEA74B /* HomeViewModel.swift */; };
 		0D2D0EE22BE9F96B00D9F6C3 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 0D2D0EE12BE9F96B00D9F6C3 /* Localizable.xcstrings */; };
+		0D2D0EE92BE9FD4A00D9F6C3 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2D0EE82BE9FD4A00D9F6C3 /* SearchBarView.swift */; };
+		0D2D0EEB2BE9FF1500D9F6C3 /* CarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2D0EEA2BE9FF1500D9F6C3 /* CarouselView.swift */; };
+		0DB290A72BEA069900246186 /* FlagCountryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB290A62BEA069900246186 /* FlagCountryView.swift */; };
+		0DB290A92BEA06FF00246186 /* ShoppingCartBtnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB290A82BEA06FF00246186 /* ShoppingCartBtnView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +78,10 @@
 		0D06977E2BE8BB3600DEA74B /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		0D0697802BE8D01300DEA74B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		0D2D0EE12BE9F96B00D9F6C3 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		0D2D0EE82BE9FD4A00D9F6C3 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		0D2D0EEA2BE9FF1500D9F6C3 /* CarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
+		0DB290A62BEA069900246186 /* FlagCountryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagCountryView.swift; sourceTree = "<group>"; };
+		0DB290A82BEA06FF00246186 /* ShoppingCartBtnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartBtnView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +234,9 @@
 			isa = PBXGroup;
 			children = (
 				0D06977E2BE8BB3600DEA74B /* ImageView.swift */,
+				0D2D0EE82BE9FD4A00D9F6C3 /* SearchBarView.swift */,
+				0DB290A62BEA069900246186 /* FlagCountryView.swift */,
+				0DB290A82BEA06FF00246186 /* ShoppingCartBtnView.swift */,
 			);
 			path = Atoms;
 			sourceTree = "<group>";
@@ -233,6 +244,7 @@
 		0D2D0EE42BE9F9B800D9F6C3 /* Molecules */ = {
 			isa = PBXGroup;
 			children = (
+				0D2D0EEA2BE9FF1500D9F6C3 /* CarouselView.swift */,
 			);
 			path = Molecules;
 			sourceTree = "<group>";
@@ -393,16 +405,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DB290A72BEA069900246186 /* FlagCountryView.swift in Sources */,
 				0D0697672BE8AF8900DEA74B /* CategoryModel.swift in Sources */,
 				0D06976B2BE8AF8900DEA74B /* SiteConfigSettingsModel.swift in Sources */,
 				0D06976C2BE8AF8900DEA74B /* SitesModel.swift in Sources */,
 				0D06976F2BE8AF8900DEA74B /* HomeView.swift in Sources */,
 				0D06977F2BE8BB3600DEA74B /* ImageView.swift in Sources */,
 				0D06976D2BE8AF8900DEA74B /* ProductsApi.swift in Sources */,
+				0DB290A92BEA06FF00246186 /* ShoppingCartBtnView.swift in Sources */,
+				0D2D0EEB2BE9FF1500D9F6C3 /* CarouselView.swift in Sources */,
 				0D0697682BE8AF8900DEA74B /* CurrencyModel.swift in Sources */,
 				0D06976A2BE8AF8900DEA74B /* SiteConfigModel.swift in Sources */,
 				0D0697712BE8AF8900DEA74B /* UserPreferencesService.swift in Sources */,
 				0D0697812BE8D01300DEA74B /* HomeViewModel.swift in Sources */,
+				0D2D0EE92BE9FD4A00D9F6C3 /* SearchBarView.swift in Sources */,
 				0D0697102BE8AE6900DEA74B /* MercadoLibreApp.swift in Sources */,
 				0D06977B2BE8B03600DEA74B /* SelectSiteView.swift in Sources */,
 				0D0697732BE8AFBE00DEA74B /* SelectSiteViewModel.swift in Sources */,

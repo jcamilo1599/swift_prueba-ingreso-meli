@@ -15,28 +15,18 @@ struct HomeView: View {
         NavigationStack {
             ScrollView {
                 VStack {
+                    SearchBarView()
+                    CarouselView()
                 }
             }
+            .ignoresSafeArea(edges: [.leading, .trailing])
             .navigationTitle("app-name")
-            .navigationBarItems(trailing: HStack {
-                var flagURL: URL? {
-                    if let countryCode = preferences.countryCode, let flagcdn = ProcessInfo.processInfo.environment["FLAG_CDN"] {
-                        return URL(string: "https://\(flagcdn)/h40/\(countryCode.lowercased()).png")
-                    }
-                    
-                    return nil
+            .navigationBarItems(
+                trailing: HStack {
+                    FlagCountryView(countryCode: preferences.countryCode)
+                    ShoppingCartBtnView()
                 }
-                
-                if let flag = flagURL {
-                    NavigationLink(destination: SelectSiteView(isIntro: false)) {
-                        ImageView(imageURL: flag)
-                            .frame(minWidth: 40, maxWidth: 40, minHeight: 28, maxHeight: 28)
-                            .scaledToFit()
-                            .clipShape(Circle())
-                            .shadow(radius: 2)
-                    }
-                }
-            })
+            )
         }
     }
 }
