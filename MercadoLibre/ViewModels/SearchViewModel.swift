@@ -10,4 +10,17 @@ import Foundation
 
 class SearchViewModel: ObservableObject {
     @Published var searchText = ""
+    var cancellable: AnyCancellable?
+    
+    init() {
+        cancellable = $searchText
+            .debounce(for: .seconds(1), scheduler: RunLoop.main)
+            .removeDuplicates()
+            .sink { [weak self] text in
+                self?.performSearch(text: text)
+            }
+    }
+    
+    func performSearch(text: String) {
+    }
 }
