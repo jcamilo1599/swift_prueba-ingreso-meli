@@ -1,0 +1,10 @@
+//
+//  Debug.xcconfig
+//  MercadoLibre
+//
+//  Created by Juan Camilo Marín Ochoa on 6/05/24.
+//
+
+API_BASE_URL = api.mercadolibre.com
+DEFAULT_COUNTRY_ID = MCO
+FLAG_CDN = flagcdn.com

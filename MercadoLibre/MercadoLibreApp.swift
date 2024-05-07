@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct MercadoLibreApp: App {
+    @AppStorage("country_id") var countryId: String = ""
+    @AppStorage("default_currency_id") var defaultCurrencyId: String = ""
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if countryId != "" && defaultCurrencyId != "" {
+                HomeView()
+            } else {
+                SelectSiteView()
+            }
         }
     }
 }
