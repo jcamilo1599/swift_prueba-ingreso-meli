@@ -86,6 +86,23 @@
         }
       }
     },
+    "no-products" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No products loaded"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No se cargaron productos"
+          }
+        }
+      }
+    },
     "no-sites" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -103,7 +120,25 @@
         }
       }
     },
-    "results" : {
+    "results-category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resultados for Category"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resultados por Categoria"
+          }
+        }
+      }
+    },
+    "results-search" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

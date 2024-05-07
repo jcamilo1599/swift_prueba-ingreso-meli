@@ -25,16 +25,18 @@ struct CategoriesView: View {
             
             LazyVGrid(columns: columns) {
                 ForEach(Array(categories.enumerated()), id: \.element.id) { index, category in
-                    Text(category.name)
-                        .foregroundColor(.black)
-                        .bold()
-                        .multilineTextAlignment(.center)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(geoReaderBackground(index: index))
-                        .frame(height: rowHeights[Int(index / 2)])
-                        .background(Color(hex: "fee603"))
-                        .cornerRadius(8)
+                    NavigationLink(destination: ResultsView(category: category.id)) {
+                        Text(category.name)
+                            .foregroundColor(.black)
+                            .bold()
+                            .multilineTextAlignment(.center)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(geoReaderBackground(index: index))
+                            .frame(height: rowHeights[Int(index / 2)])
+                            .background(Color(hex: "fee603"))
+                            .cornerRadius(8)
+                    }
                 }
             }
             .padding(.horizontal)
