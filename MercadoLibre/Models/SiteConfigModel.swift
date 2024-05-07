@@ -9,7 +9,7 @@ import Foundation
 
 struct SiteConfigModel: Codable, Identifiable {
     let id, name, countryID, saleFeesMode: String
-    let mercadopagoVersion: Int
+    let mercadopagoVersion: Int?
     let defaultCurrencyID, immediatePayment: String
     let paymentMethodIDS: [String]
     let settings: SiteConfigSettingsModel

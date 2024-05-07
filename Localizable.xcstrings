@@ -6,23 +6,51 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
+            "state" : "needs_review",
+            "value" : "Mercado Libre"
           }
         },
         "es-419" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "MercadoLibre"
+            "value" : "Mercado Libre"
           }
         }
       }
     },
-    "Categoría %lld" : {
-
+    "error-api" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There was a problem getting the information."
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se produjo un error obteniendo la información"
+          }
+        }
+      }
     },
-    "Categorías Destacadas" : {
-
+    "featured-categories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Featured Categories"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categorías Destacadas"
+          }
+        }
+      }
     },
     "field-search" : {
       "extractionState" : "manual",

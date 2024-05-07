@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct CategoryModel: Codable, Identifiable {
+struct CategoryModel: Hashable, Codable, Identifiable {
     let id, name: String
 }
