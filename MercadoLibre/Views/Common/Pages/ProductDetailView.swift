@@ -49,7 +49,7 @@ struct ProductDetailView: View {
                         Text(product.price != nil ? "$\(product.price!)" : "price-not-available")
                             .font(.title)
                         
-                        Text("Stock \(String(product.installments?.quantity ?? 0))")
+                        Text("stock \(String(product.installments?.quantity ?? 0))")
                             .foregroundStyle(.gray)
                     }
                     .padding(.horizontal)

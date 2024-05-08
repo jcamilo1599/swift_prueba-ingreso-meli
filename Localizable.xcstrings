@@ -221,6 +221,23 @@
           }
         }
       }
+    },
+    "stock %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Current stock %@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stock actual %@"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
