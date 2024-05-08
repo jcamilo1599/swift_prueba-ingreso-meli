@@ -42,22 +42,37 @@ struct ResultsView: View {
         ScrollView {
             LazyVStack {
                 ForEach(products, id: \.id) { product in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(product.title)
-                                .font(.headline)
-                                .foregroundColor(.primary)
-                            Text("$\(product.price)")
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                        }
-                        Spacer()
+                    NavigationLink(destination: ProductDetailView(product: product)) {
+                        buildProduct(product: product)
                     }
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
                 }
             }
         }
+    }
+    
+    private func buildProduct(product: ProductModel) -> some View {
+        HStack {
+            ImageView(imageURL: URL(string: product.thumbnail)!)
+                .frame(width: 100, height: 100)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+            
+            Spacer()
+                .frame(width: 10)
+            
+            VStack(alignment: .leading) {
+                Text(product.title)
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                    .multilineTextAlignment(.leading)
+                Text(product.price != nil ? "$\(product.price!)" : "price-not-available")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+            
+            Spacer()
+        }
+        .padding(.horizontal)
+        .padding(.vertical, 10)
     }
     
     private var products: [ProductModel] {
@@ -66,6 +81,10 @@ struct ResultsView: View {
         }
         
         return []
+    }
+    
+    private func getPrice(price: Double) -> String {
+        return String(price).components(separatedBy: ",")[0]
     }
     
     private var getTitle: String {

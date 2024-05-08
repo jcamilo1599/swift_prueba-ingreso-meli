@@ -120,6 +120,23 @@
         }
       }
     },
+    "price-not-available" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Price not available"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Precio no disponible"
+          }
+        }
+      }
+    },
     "results-category" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -167,6 +184,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Selecciona el País"
+          }
+        }
+      }
+    },
+    "seller" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seller"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vendedor"
           }
         }
       }

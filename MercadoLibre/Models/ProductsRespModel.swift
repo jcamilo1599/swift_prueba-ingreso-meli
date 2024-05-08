@@ -5,20 +5,26 @@
 //  Created by Juan Camilo Marín Ochoa on 7/05/24.
 //
 
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
+//
+//   let productsResp = try? JSONDecoder().decode(ProductsResp.self, from: jsonData)
+
 import Foundation
 
-// MARK: - ProductsRespModel
+// MARK: - ProductsResp
 struct ProductsRespModel: Codable {
-    let siteID: SiteID
-    let countryDefaultTimeZone, query: String
-    let paging: Paging
+    let siteID: String
+    let countryDefaultTimeZone: String
+    let query: String?
+    let paging: ProductsPaging
     let results: [ProductModel]
-    let sort: Sort
-    let availableSorts: [Sort]
-    let filters: [JSONAny]
-    let availableFilters: [AvailableFilter]
-    let pdpTracking: PDPTracking
-    
+    let sort: ProductsSort
+    let availableSorts: [ProductsSort]
+    let filters: [ProductsFilter]
+    let availableFilters: [ProductsAvailableFilter]
+    let pdpTracking: ProductsPDPTracking?
+
     enum CodingKeys: String, CodingKey {
         case siteID = "site_id"
         case countryDefaultTimeZone = "country_default_time_zone"
@@ -30,27 +36,46 @@ struct ProductsRespModel: Codable {
     }
 }
 
-// MARK: - AvailableFilter
-struct AvailableFilter: Codable {
-    let id, name, type: String
-    let values: [AvailableFilterValue]
+// MARK: - ProductsAvailableFilter
+struct ProductsAvailableFilter: Codable {
+    let id, name: String
+    let type: String
+    let values: [ProductsAvailableFilterValue]
 }
 
-// MARK: - AvailableFilterValue
-struct AvailableFilterValue: Codable {
+// MARK: - ProductsAvailableFilterValue
+struct ProductsAvailableFilterValue: Codable {
     let id, name: String
     let results: Int
 }
 
-// MARK: - Sort
-struct Sort: Codable {
-    let id, name: String
+// MARK: - ProductsSort
+struct ProductsSort: Codable {
+    let id, name: String?
 }
 
-// MARK: - Paging
-struct Paging: Codable {
+// MARK: - ProductsFilter
+struct ProductsFilter: Codable {
+    let id, name: String
+    let type: String
+    let values: [ProductsFilterValue]
+}
+
+// MARK: - ProductsFilterValue
+struct ProductsFilterValue: Codable {
+    let id, name: String
+    let pathFromRoot: [ProductsSort]
+
+    enum CodingKeys: String, CodingKey {
+        case id, name
+        case pathFromRoot = "path_from_root"
+    }
+}
+
+// MARK: - ProductsPaging
+struct ProductsPaging: Codable {
     let total, primaryResults, offset, limit: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case total
         case primaryResults = "primary_results"
@@ -58,61 +83,60 @@ struct Paging: Codable {
     }
 }
 
-// MARK: - PDPTracking
-struct PDPTracking: Codable {
+// MARK: - ProductsPDPTracking
+struct ProductsPDPTracking: Codable {
     let group: Bool
-    let productInfo: [ProductInfo]
-    
+    let productInfo: [ProductsProductInfo]
+
     enum CodingKeys: String, CodingKey {
         case group
         case productInfo = "product_info"
     }
 }
 
-// MARK: - ProductInfo
-struct ProductInfo: Codable {
+// MARK: - ProductsProductInfo
+struct ProductsProductInfo: Codable {
     let id: String
     let score: Int
-    let status: Status
-}
-
-enum Status: String, Codable {
-    case shown = "shown"
+    let status: String
 }
 
 // MARK: - ProductModel
 struct ProductModel: Codable {
     let id, title: String
-    let condition: Condition
+    let condition: String?
     let thumbnailID: String
     let catalogProductID: String?
-    let listingTypeID: ListingTypeID
+    let listingTypeID: String
     let permalink: String
-    let buyingMode: BuyingMode
-    let siteID: SiteID
+    let buyingMode: String
+    let siteID: String
     let categoryID, domainID: String
     let thumbnail: String
-    let currencyID: CurrencyID
+    let currencyID: String?
     let orderBackend: Int
-    let price: Double
-    let originalPrice: Double?
+    let price, originalPrice: Double?
     let salePrice: JSONNull?
     let availableQuantity: Int
     let officialStoreID: Int?
-    let officialStoreName: String?
     let useThumbnailID, acceptsMercadopago: Bool
-    let shipping: Shipping
+    let shipping: ProductsShipping
     let stopTime: String
-    let seller: Seller
-    let attributes: [Attribute]
-    let installments: Installments?
+    let seller: ProductsSeller
+    let attributes: [ProductsResultAttribute]
+    let installments: ProductsInstallments?
     let winnerItemID: JSONNull?
     let catalogListing: Bool
     let discounts: JSONNull?
-    let promotions: [JSONAny]
-    let differentialPricing: DifferentialPricing?
+    let promotions: [JSONAny]?
     let inventoryID: String?
-    
+    let location: ProductsLocation?
+    let sellerContact: ProductsSellerContact?
+    let variationFilters: [String]?
+    let variationsData: [String: ProductsVariationsDatum]?
+    let officialStoreName: String?
+    let differentialPricing: ProductsDifferentialPricing?
+
     enum CodingKeys: String, CodingKey {
         case id, title, condition
         case thumbnailID = "thumbnail_id"
@@ -131,7 +155,6 @@ struct ProductModel: Codable {
         case salePrice = "sale_price"
         case availableQuantity = "available_quantity"
         case officialStoreID = "official_store_id"
-        case officialStoreName = "official_store_name"
         case useThumbnailID = "use_thumbnail_id"
         case acceptsMercadopago = "accepts_mercadopago"
         case shipping
@@ -140,22 +163,28 @@ struct ProductModel: Codable {
         case winnerItemID = "winner_item_id"
         case catalogListing = "catalog_listing"
         case discounts, promotions
-        case differentialPricing = "differential_pricing"
         case inventoryID = "inventory_id"
+        case location
+        case sellerContact = "seller_contact"
+        case variationFilters = "variation_filters"
+        case variationsData = "variations_data"
+        case officialStoreName = "official_store_name"
+        case differentialPricing = "differential_pricing"
     }
 }
 
-// MARK: - Attribute
-struct Attribute: Codable {
-    let id, name: String
+// MARK: - ProductsResultAttribute
+struct ProductsResultAttribute: Codable {
+    let id: String
+    let name: String
     let valueID, valueName: String?
-    let attributeGroupID: AttributeGroupID
-    let attributeGroupName: AttributeGroupName
-    let valueStruct: Struct?
-    let values: [AttributeValue]
-    let source: Int
-    let valueType: ValueType
-    
+    let attributeGroupID: String
+    let attributeGroupName: String
+    let valueStruct: ProductsStruct?
+    let values: [ProductsAttributeValue]
+    let source: Double?
+    let valueType: String
+
     enum CodingKeys: String, CodingKey {
         case id, name
         case valueID = "value_id"
@@ -168,48 +197,18 @@ struct Attribute: Codable {
     }
 }
 
-enum AttributeGroupID: String, Codable {
-    case empty = ""
-    case main = "MAIN"
-    case others = "OTHERS"
-}
-
-enum AttributeGroupName: String, Codable {
-    case empty = ""
-    case otros = "Otros"
-    case principales = "Principales"
-}
-
-// MARK: - Struct
-struct Struct: Codable {
+// MARK: - ProductsStruct
+struct ProductsStruct: Codable {
     let number: Double
-    let unit: Unit
+    let unit: String
 }
 
-enum Unit: String, Codable {
-    case cm = "cm"
-    case g = "g"
-    case m = "m"
-    case mL = "mL"
-    case mm = "mm"
-    case w = "W"
-}
-
-enum ValueType: String, Codable {
-    case boolean = "boolean"
-    case integer = "integer"
-    case list = "list"
-    case number = "number"
-    case numberUnit = "number_unit"
-    case string = "string"
-}
-
-// MARK: - AttributeValue
-struct AttributeValue: Codable {
+// MARK: - ProductsAttributeValue
+struct ProductsAttributeValue: Codable {
     let id, name: String?
-    let valueStruct: Struct?
-    let source: Int
-    
+    let valueStruct: ProductsStruct?
+    let source: Double?
+
     enum CodingKeys: String, CodingKey {
         case id, name
         case valueStruct = "struct"
@@ -217,54 +216,78 @@ struct AttributeValue: Codable {
     }
 }
 
-enum BuyingMode: String, Codable {
-    case buyItNow = "buy_it_now"
-}
-
-enum Condition: String, Codable {
-    case new = "new"
-}
-
-enum CurrencyID: String, Codable {
-    case mxn = "MXN"
-}
-
-// MARK: - DifferentialPricing
-struct DifferentialPricing: Codable {
+// MARK: - ProductsDifferentialPricing
+struct ProductsDifferentialPricing: Codable {
     let id: Int
 }
 
-// MARK: - Installments
-struct Installments: Codable {
+// MARK: - ProductsInstallments
+struct ProductsInstallments: Codable {
     let quantity: Int
     let amount, rate: Double
-    let currencyID: CurrencyID
-    
+    let currencyID: String?
+
     enum CodingKeys: String, CodingKey {
         case quantity, amount, rate
         case currencyID = "currency_id"
     }
 }
 
-enum ListingTypeID: String, Codable {
-    case goldPro = "gold_pro"
-    case goldSpecial = "gold_special"
+// MARK: - ProductsLocation
+struct ProductsLocation: Codable {
+    let addressLine: ProductsAddressLine
+    let zipCode: String
+    let subneighborhood: JSONNull?
+    let neighborhood, city, state, country: ProductsSort
+    let latitude, longitude: Double?
+
+    enum CodingKeys: String, CodingKey {
+        case addressLine = "address_line"
+        case zipCode = "zip_code"
+        case subneighborhood, neighborhood, city, state, country, latitude, longitude
+    }
 }
 
-// MARK: - Seller
-struct Seller: Codable {
+enum ProductsAddressLine: String, Codable {
+    case arraijan62484512 = "Arraijan 62484512"
+    case avenidaDOSAutonomistas5334 = "Avenida dos Autonomistas, 5334"
+    case brisasDeArreijanSN = "Brisas de arreijan  SN"
+    case empty = ""
+    case the360791646 = "3 60791646"
+}
+
+// MARK: - ProductsSeller
+struct ProductsSeller: Codable {
     let id: Int
     let nickname: String
 }
 
-// MARK: - Shipping
-struct Shipping: Codable {
+// MARK: - ProductsSellerContact
+struct ProductsSellerContact: Codable {
+    let contact, otherInfo: String
+    let webpage: String
+    let areaCode, phone, areaCode2, phone2: String
+    let email: String
+
+    enum CodingKeys: String, CodingKey {
+        case contact
+        case otherInfo = "other_info"
+        case webpage
+        case areaCode = "area_code"
+        case phone
+        case areaCode2 = "area_code2"
+        case phone2, email
+    }
+}
+
+// MARK: - ProductsShipping
+struct ProductsShipping: Codable {
     let storePickUp, freeShipping: Bool
-    let logisticType: LogisticType
-    let mode: Mode
-    let tags: [Tag]
+    let logisticType: String?
+    let mode: String
+    let tags: [String]
     let benefits, promise: JSONNull?
-    
+
     enum CodingKeys: String, CodingKey {
         case storePickUp = "store_pick_up"
         case freeShipping = "free_shipping"
@@ -273,50 +296,59 @@ struct Shipping: Codable {
     }
 }
 
-enum LogisticType: String, Codable {
-    case crossDocking = "cross_docking"
-    case fulfillment = "fulfillment"
-    case xdDropOff = "xd_drop_off"
+// MARK: - ProductsVariationsDatum
+struct ProductsVariationsDatum: Codable {
+    let thumbnail: String
+    let ratio, name: String
+    let picturesQty: Int
+    let price: Double
+    let inventoryID: String?
+    let attributes: [ProductsVariationsDatumAttribute]
+
+    enum CodingKeys: String, CodingKey {
+        case thumbnail, ratio, name
+        case picturesQty = "pictures_qty"
+        case price
+        case inventoryID = "inventory_id"
+        case attributes
+    }
 }
 
-enum Mode: String, Codable {
-    case me2 = "me2"
-}
+// MARK: - ProductsVariationsDatumAttribute
+struct ProductsVariationsDatumAttribute: Codable {
+    let id: String
+    let name: String
+    let valueName: String?
+    let valueType: String
 
-enum Tag: String, Codable {
-    case cbtFulfillment = "cbt_fulfillment"
-    case fsThresholdMlmChangeDic2020 = "fs_threshold_mlm_change_dic2020"
-    case fulfillment = "fulfillment"
-    case mandatoryFreeShipping = "mandatory_free_shipping"
-    case mlmChgThresholdAgo22 = "MLM-chg-threshold-ago-22"
-    case selfServiceIn = "self_service_in"
-    case selfServiceOut = "self_service_out"
-}
-
-enum SiteID: String, Codable {
-    case mlm = "MLM"
+    enum CodingKeys: String, CodingKey {
+        case id, name
+        case valueName = "value_name"
+        case valueType = "value_type"
+    }
 }
 
 // MARK: - Encode/decode helpers
+
 class JSONNull: Codable, Hashable {
-    
+
     public static func == (lhs: JSONNull, rhs: JSONNull) -> Bool {
         return true
     }
-    
+
     public var hashValue: Int {
         return 0
     }
-    
+
     public init() {}
-    
+
     public required init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
         if !container.decodeNil() {
             throw DecodingError.typeMismatch(JSONNull.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
         }
     }
-    
+
     public func encode(to encoder: Encoder) throws {
         var container = encoder.singleValueContainer()
         try container.encodeNil()
@@ -325,38 +357,38 @@ class JSONNull: Codable, Hashable {
 
 class JSONCodingKey: CodingKey {
     let key: String
-    
+
     required init?(intValue: Int) {
         return nil
     }
-    
+
     required init?(stringValue: String) {
         key = stringValue
     }
-    
+
     var intValue: Int? {
         return nil
     }
-    
+
     var stringValue: String {
         return key
     }
 }
 
 class JSONAny: Codable {
-    
+
     let value: Any
-    
+
     static func decodingError(forCodingPath codingPath: [CodingKey]) -> DecodingError {
         let context = DecodingError.Context(codingPath: codingPath, debugDescription: "Cannot decode JSONAny")
         return DecodingError.typeMismatch(JSONAny.self, context)
     }
-    
+
     static func encodingError(forValue value: Any, codingPath: [CodingKey]) -> EncodingError {
         let context = EncodingError.Context(codingPath: codingPath, debugDescription: "Cannot encode JSONAny")
         return EncodingError.invalidValue(value, context)
     }
-    
+
     static func decode(from container: SingleValueDecodingContainer) throws -> Any {
         if let value = try? container.decode(Bool.self) {
             return value
@@ -375,7 +407,7 @@ class JSONAny: Codable {
         }
         throw decodingError(forCodingPath: container.codingPath)
     }
-    
+
     static func decode(from container: inout UnkeyedDecodingContainer) throws -> Any {
         if let value = try? container.decode(Bool.self) {
             return value
@@ -402,7 +434,7 @@ class JSONAny: Codable {
         }
         throw decodingError(forCodingPath: container.codingPath)
     }
-    
+
     static func decode(from container: inout KeyedDecodingContainer<JSONCodingKey>, forKey key: JSONCodingKey) throws -> Any {
         if let value = try? container.decode(Bool.self, forKey: key) {
             return value
@@ -429,7 +461,7 @@ class JSONAny: Codable {
         }
         throw decodingError(forCodingPath: container.codingPath)
     }
-    
+
     static func decodeArray(from container: inout UnkeyedDecodingContainer) throws -> [Any] {
         var arr: [Any] = []
         while !container.isAtEnd {
@@ -438,7 +470,7 @@ class JSONAny: Codable {
         }
         return arr
     }
-    
+
     static func decodeDictionary(from container: inout KeyedDecodingContainer<JSONCodingKey>) throws -> [String: Any] {
         var dict = [String: Any]()
         for key in container.allKeys {
@@ -447,7 +479,7 @@ class JSONAny: Codable {
         }
         return dict
     }
-    
+
     static func encode(to container: inout UnkeyedEncodingContainer, array: [Any]) throws {
         for value in array {
             if let value = value as? Bool {
@@ -471,7 +503,7 @@ class JSONAny: Codable {
             }
         }
     }
-    
+
     static func encode(to container: inout KeyedEncodingContainer<JSONCodingKey>, dictionary: [String: Any]) throws {
         for (key, value) in dictionary {
             let key = JSONCodingKey(stringValue: key)!
@@ -496,7 +528,7 @@ class JSONAny: Codable {
             }
         }
     }
-    
+
     static func encode(to container: inout SingleValueEncodingContainer, value: Any) throws {
         if let value = value as? Bool {
             try container.encode(value)
@@ -512,7 +544,7 @@ class JSONAny: Codable {
             throw encodingError(forValue: value, codingPath: container.codingPath)
         }
     }
-    
+
     public required init(from decoder: Decoder) throws {
         if var arrayContainer = try? decoder.unkeyedContainer() {
             self.value = try JSONAny.decodeArray(from: &arrayContainer)
@@ -523,7 +555,7 @@ class JSONAny: Codable {
             self.value = try JSONAny.decode(from: container)
         }
     }
-    
+
     public func encode(to encoder: Encoder) throws {
         if let arr = self.value as? [Any] {
             var container = encoder.unkeyedContainer()
