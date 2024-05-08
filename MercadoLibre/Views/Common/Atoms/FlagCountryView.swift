@@ -12,7 +12,9 @@ struct FlagCountryView: View {
     
     var body: some View {
         var flagURL: URL? {
-            if let countryCode = countryCode, let flagcdn = ProcessInfo.processInfo.environment["FLAG_CDN"] {
+            if let countryCode = countryCode {
+                let flagcdn = ProcessInfo.processInfo.environment["FLAG_CDN"] ?? "flagcdn.com"
+                
                 return URL(string: "https://\(flagcdn)/h40/\(countryCode.lowercased()).png")
             }
             

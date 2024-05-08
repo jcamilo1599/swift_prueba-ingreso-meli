@@ -12,6 +12,7 @@ struct ShoppingCartBtnView: View {
         Button(action: {
         }) {
             Image(systemName: "cart")
+                .accessibility(identifier: "CartButton")
         }
     }
 }

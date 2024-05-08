@@ -43,7 +43,7 @@ struct ImageView: View {
 }
 
 #Preview {
-    let flagcdn = ProcessInfo.processInfo.environment["FLAG_CDN"] ?? ""
+    let flagcdn = ProcessInfo.processInfo.environment["FLAG_CDN"] ?? "flagcdn.com"
     
     return ImageView(imageURL: URL(
         string: "https://\(flagcdn)/h40/co.png"

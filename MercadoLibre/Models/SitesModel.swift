@@ -56,9 +56,9 @@ struct SitesModel: Codable, Identifiable {
     }
     
     var flagURL: URL? {
-        if let flagcdn = ProcessInfo.processInfo.environment["FLAG_CDN"] {
-            return URL(string: "https://\(flagcdn)/h40/\(countryCode.lowercased()).png")
-        }
+        let flagcdn = ProcessInfo.processInfo.environment["FLAG_CDN"] ?? "flagcdn.com"
+        
+        return URL(string: "https://\(flagcdn)/h40/\(countryCode.lowercased()).png")
         
         return nil
     }
