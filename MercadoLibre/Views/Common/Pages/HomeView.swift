@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @StateObject private var viewModel = HomeViewModel()
     @State private var navigateToResults = false
+    @State var countryCode: String?
     
     var body: some View {
         NavigationStack {
@@ -26,7 +27,7 @@ struct HomeView: View {
                 }
                 .navigationBarItems(
                     trailing: HStack {
-                        FlagCountryView(countryCode: viewModel.prefs.countryCode)
+                        FlagCountryView(countryCode: countryCode)
                         ShoppingCartBtnView()
                     }
                 )
@@ -38,7 +39,9 @@ struct HomeView: View {
                     navigateToResults = false
                     viewModel.getSettings()
                 }
-                .onChange(of: viewModel.prefs.countryCode, initial: false) { old, new in
+                .onChange(of: viewModel.prefs.countryCode, initial: true) { old, new in
+                    countryCode = new
+                    
                     if old != new {
                         viewModel.getSettings()
                     }

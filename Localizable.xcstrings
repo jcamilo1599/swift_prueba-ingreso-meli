@@ -171,6 +171,23 @@
         }
       }
     },
+    "search %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search by %@"
+          }
+        },
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Buscar por %@"
+          }
+        }
+      }
+    },
     "select-country" : {
       "extractionState" : "manual",
       "localizations" : {

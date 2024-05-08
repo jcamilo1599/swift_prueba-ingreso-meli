@@ -16,8 +16,14 @@ struct SearchView: View {
         if searchText.count > 0 {
             ZStack {
                 Color.white
+                
+                List {
+                    NavigationLink(destination: ResultsView(searchText: searchText)) {
+                        Text("search \(searchText)")
+                    }
+                }
+                .ignoresSafeArea(edges: [.leading, .bottom, .trailing])
             }
-            .ignoresSafeArea()
         }
     }
 }
